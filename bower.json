@@ -1,0 +1,40 @@
+{
+  "name": "starter-site",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "bootstrap-sass": "~3.3.5",
+    "sweetalert": "~1.1.3",
+    "jquery-ui": "~1.10.4",
+    "bootswatch": "~3.3.5",
+    "datatables": "~1.10.7",
+    "datatables-bootstrap3-plugin": "~0.4.0",
+    "jquery-colorbox": "~1.6.1",
+    "flag-sprites": "~1.1.1",
+    "metisMenu": "~1.1.3",
+    "datatables-responsive": "~1.0.3",
+    "select2": ">=3.5.4",
+    "summernote": ">=0.6.16",
+    "Justified-Gallery": "3.6.0",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37",
+    "bootstrap-datepicker": "~1.5.0",
+    "timeline": "http://secondtruth.github.io/startmin/css/timeline.css",
+    "startmin": "http://secondtruth.github.io/startmin/js/startmin.js",
+    "morris": "http://secondtruth.github.io/startmin/css/morris.css",
+    "raphael.min": "http://secondtruth.github.io/startmin/js/raphael.min.js",
+    "morris.min": "http://secondtruth.github.io/startmin/js/morris.min.js",
+    "metisMenu.min": "http://secondtruth.github.io/startmin/css/metisMenu.min.css",
+    "dataTables.bootstrap": "http://secondtruth.github.io/startmin/css/dataTables/dataTables.bootstrap.css",
+    "dataTables.responsive": "http://secondtruth.github.io/startmin/css/dataTables/dataTables.responsive.css",
+    "jquery.dataTables.min": "http://secondtruth.github.io/startmin/js/dataTables/jquery.dataTables.min.js",
+    "morris-data": "http://secondtruth.github.io/startmin/js/morris-data.js",
+    "select2-css": "~3.5.1",
+    "jquery.maskedinput": "http://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"
+
+  },
+  "_comment": {
+    "jquery-validation": "jquery.validation#~1.14.0",
+    "animate.css": "~3.4.0",
+    "gsap": "~1.18.0"
+  }
+}

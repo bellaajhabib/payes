@@ -1,0 +1,129 @@
+/**
+ * @author    BOX http://box.agency
+ * @contact   admin@box.agency
+ */
+
+@import 'vendor/bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+
+@import 'base';
+
+/**
+ * Helper Variables & Functions
+ */
+
+ /*@font-face {
+   font-family: ooredoo;
+   src:
+   url('../fonts/ooredoo-regular-webfont.woff2') format('woff2'),
+   url('../fonts/ooredoo-regular-webfont.woff') format('woff');
+ }
+
+ @font-face {
+   font-family: ooredoo;
+   src:
+   url('../fonts/ooredoo-bold-webfont.woff2') format('woff2'),
+   url('../fonts/ooredoo-bold-webfont.woff') format('woff');
+   font-weight: bold;
+ }
+*/
+
+$red: #ed1d24;
+$green: #62bb46;
+$color_steel_blue_approx: #337ab7;
+$color_blumine_approx: #23527c;
+$font: ooredoo, helvetica, arial, sans-serif;
+
+body {
+  font: 1.4em/1.4 $font;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  word-wrap: break-word;
+
+  // background: url(../img/bg.png) center top no-repeat;
+  /*.flexbox & {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }*/
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+a {
+  color: $color_steel_blue_approx;
+  &:hover, &:focus {
+    color: $color_blumine_approx;
+    text-decoration: none;
+  }
+}
+
+.hide {
+  display: none !important;
+}
+.show {
+  display: block !important;
+}
+
+/* ==========================================================================
+   Layout Styles
+   ========================================================================== */
+
+.main {
+  //  .flexbox & { flex: 1 0 auto; }
+  position: relative;
+}
+#datetimepicker { position: relative; z-index: 1000; }
+/* ==========================================================================
+   Module Styles
+   ========================================================================== */
+//*************Module  calcule primes******************************************//
+.prime{
+
+}
+.btn-primary-header {
+  padding: 8px 40px;
+  margin-top: 12px;
+}
+.label_montant_prime{
+  display: inline-block;
+  width: 180px;
+  text-align: left;
+  vertical-align: middle;
+  padding: 10px 0;
+
+}
+.remove_field_montant_prime{
+  margin-left: 25px;
+  color: #F0F0F0;
+}
+.input_montant_prime{
+
+  color: #000000;
+  margin-right: 20px;
+
+
+}
+.heading-conges-lists{
+background-color:#367FA9 !important;
+  color: #FFFBD3 !important;
+}
+
+/***********************************************************************************************/
+
+/**************************************Table Personnel**********************************************************/
+table .table-striped{
+  font-size: 12px;
+}
+table.table-bordered.dataTable {
+
+  width: 100% !important
+}
+/*****************************************************************************************************************/
+@import "admin";

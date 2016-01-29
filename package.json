@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.8.8"
+  },
+  "dependencies": {
+    "dotenv": "1.2.0",
+    "gulp-imagemin": "^2.4.0",
+    "imagemin-pngquant": "^4.2.0",
+    "laravel-elixir": "^3.0.0",
+    "underscore": "^1.8.3",
+    "wiredep": "^2.2.2"
+  }
+}
