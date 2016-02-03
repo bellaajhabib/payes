@@ -38,7 +38,7 @@
         CURRENT_URL = '{{ request()->url() }}';
         APP_ENV     = '{{ app()->environment() }}';
     </script>
-    <script src="{{ asset('js/modernizr.js') }}"></script>
+
 </head>
 <body class="@yield('class')">
 <!--[if lt IE 9]>
@@ -70,8 +70,6 @@
 
 <script src="{{ asset('js/vendor.js') }}"></script>
 <script src="{{ asset(elixir('js/main.js')) }}"></script>
-<script src="http://blackrockdigital.github.io/startbootstrap-sb-admin-2/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="http://blackrockdigital.github.io/startbootstrap-sb-admin-2/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
 @yield('scripts')
 

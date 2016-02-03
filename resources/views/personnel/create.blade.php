@@ -31,7 +31,7 @@
                     <div class="panel-heading">
                         Création personnel
                     </div>
-                    {!! Form::open(['url' => route('personnel.store')])  !!}
+                    {!! Form::open(['url' => route('personnel.store'),'files'=> true])  !!}
                     @include('personnel.form_',['submitButtonText'=>'Ajouter ']);
                     {!! Form::close() !!}
                 </div><!-- /div panel- panel-default-->

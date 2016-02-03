@@ -17,6 +17,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Expr\Cast\Array_;
 
 //coefficion retenus cnss
 define("COEFFICIENT_RETENUE_CNSS", 0.0918);
@@ -80,7 +82,25 @@ class PersonnelController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {      /****************************Image personnel **************************************************************/
+        //uploade images personnel
+
+        $image = Input::file('image');
+        $validator = Validator::make([$image], ['image' => 'required']);
+
+        if ($image->isValid()) {
+            $dt = Carbon::parse(Carbon::now());
+            $date = $dt->timestamp ;
+            $destinationPath = 'img/uploads'; // upload path
+            $titleImages = Input::get('nom').'_'. Input::get('prenom');
+            $titleImages= preg_replace('/\s+/', '_', $titleImages);
+
+            $extension = Input::file('image')->getClientOriginalExtension(); // getting image extension
+            $fileName = $titleImages.'_'.$date.'.'.$extension; // renameing image
+           $moveImages=Input::file('image')->move($destinationPath, $fileName); // uploading file to given path
+        }
+
+        /*********************************************************************************************************/
         //
         // dd($request->all());->input('name');
         $date_de_fin_du_contrat_request = $request->input('date_de_fin_du_contrat');
@@ -88,15 +108,46 @@ class PersonnelController extends Controller
         $date_de_fin_du_contrat_request = $date_de_fin_du_contrat_request == '' ? '00/00/0000' : $request->input(
             'date_de_fin_du_contrat'
         );
+
+
         // remplace le valuer date_fin_du_contrat par la valuer date_de_fin_du_contrat_request
         $request->merge(array('date_de_fin_du_contrat' => $date_de_fin_du_contrat_request));
-        // dd($request->all());
-        $personnel = Personnels::create($request->all());
+
+        $personnel= new Personnels(array(
+            'post' => Input::get('post'),
+            'nom' => Input::get('nom'),
+            'cin' => Input::get('cin'),
+            'non_banque' => Input::get('non_banque'),
+            'cf'=>Input::get('cf'),
+            'adresse_email' => Input::get('adresse_email'),
+            'tele_personnel' => Input::get('tele_personnel'),
+            'nationalites' => Input::get('nationalites'),
+            'date_naissance' => Input::get('date_naissance'),
+            'date_entree' => Input::get('date_entree'),
+            'type_de_contrat_id' => Input::get('type_de_contrat_id'),
+            'date_de_fin_du_contrat' => Input::get('date_de_fin_du_contrat'),
+            'num_cnss' => Input::get('num_cnss'),
+            'rib_banque' => Input::get('rib_banque'),
+            'fumez_vous'=> Input::get('fumez_vous'),
+            'etat_sante'=> Input::get('etat_sante'),
+            'buvze_vous'=> Input::get('buvze_vous'),
+            'lieu_naissance' => Input::get('lieu_naissance'),
+            'adresse_domicile' => Input::get('adresse_domicile'),
+            'image' =>$fileName
+        ));
+
+        $personnel->save();
+
+       // $personnel = Personnels::findOrFail( $personnel->id);
+        //$personnel = Personnels::create($request->all());
 
         $journalPaie = new JournalPaieCoutTotal ();
         $journalIrpp = new JournalPaieIrpp ();
         $conge = new Conges();
         $cnss = new Cnss();
+
+
+
         /******************************************************CALCUL IRPP  **************************************/
         // CALCUL Salaier Brut
         $SB = $journalPaie->salaire_brut = $this->getSalaireBrut(($request->nb_jour), ($request->salaire_du_jour));

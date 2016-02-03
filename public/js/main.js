@@ -39,6 +39,10 @@
 })(jQuery);
 (function ($) {
     "use strict";
+
+    $("#target").on("click", function (evt) {
+        alert("Handler for .click() called.");
+    });
     $("#NBENFANTS").prop('disabled', true);
 
     var typeDeContrat = $('#contrat_id :selected').text();
@@ -152,17 +156,72 @@
 
     // alert( $.isFunction($("#post").mask));
 
-    $("#dateNaissance").mask("99/99/9999", { placeholder: "mm/dd/yyyy" });
-    $("#dateEntree").mask("99/99/9999", { placeholder: "mm/dd/yyyy" });
-    $("#dateFinDuContrat").mask("99/99/9999", { placeholder: "mm/dd/yyyy" });
-    $("#cnss").mask("99999999-00", { placeholder: "" });
-    $("#cin").mask("99999999", { placeholder: "" });
+    // $("#dateNaissance").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+    // $("#dateEntree").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+    // $("#dateFinDuContrat").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+    //$("#cnss").mask("99999999-00",{placeholder:""});
+    //$("#cin").mask("99999999",{placeholder:""});
 
     /******************************************************************/
 
     /************************Mask Congee*********************************/
-    $("#dateDebutConge").mask("99/99/9999", { placeholder: "mm/dd/yyyy" });
-    $("#dateFinConge").mask("99/99/9999", { placeholder: "mm/dd/yyyy" });
+    //$("#dateDebutConge").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
+    //$("#dateFinConge").mask("99/99/9999",{placeholder:"mm/dd/yyyy"});
     /******************************************************************/
+    /*****************************CheckBox select one box ****************************************/
+    $("input:checkbox").on('click', function () {
+        // in the handler, 'this' refers to the box clicked on
+        var $box = $(this);
+
+        if ($box.is(":checked")) {
+            // the name of the box is retrieved using the .attr() method
+            // as it is assumed and expected to be immutable
+            var group = "input:checkbox[name='" + $box.attr("name") + "']";
+
+            // the checked state of the group/box on the other hand will change
+            // and the current value is retrieved using .prop() method
+            $(group).prop("checked", false);
+            $box.prop("checked", true);
+        } else {
+            $box.prop("checked", false);
+        }
+    });
+    /****************************************Open Dialog Avance**********************************************/
+
+    $(".dataTable_wrapper").on('click', '#avance', function () {
+        $('#myModal').modal('show');
+
+        $('#id-personnel').attr({
+            "value": $(this).attr("val")
+        });
+    });
+
+    /*************************************************************************************/
+    /*****************************Ajax Laravel Addd Avance
+     $("#ajout-avance").on('click', function () {
+           alert(  $('#id-personnel').attr("value"));
+       });*******************************/
+
+    $("#ajout-avance").on('click', function () {
+        alert($('#id-personnel').attr("value"));
+        $.ajaxSetup({
+            headers: {
+                'X-XSRF-Token': $('meta[name="_token"]').attr('content')
+            }
+        });
+        var username = $('#id-personnel').attr("value");
+        ;
+
+        var dataString = 'username=' + username;
+        $.ajax({
+            type: "POST",
+            url: "getRequest",
+            data: dataString,
+            success: function success(data) {
+                console.log('data');
+            }
+        }, "json");
+    });
+    /*************************************************************************************/
 })(jQuery);
 //# sourceMappingURL=main.js.map

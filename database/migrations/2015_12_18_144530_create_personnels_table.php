@@ -19,7 +19,6 @@ class CreatePersonnelsTable extends Migration
             $table->string('prenom');
             $table->integer('nomber_jour');
             $table->integer('salaire_jour');
-
             $table->string('paiement_par');
             $table->bigInteger('cin');
             $table->string('cf');
@@ -32,6 +31,16 @@ class CreatePersonnelsTable extends Migration
             $table->integer('conges_paye');
             $table->integer('nb_jour');
             $table->float('salaire_du_jour');
+            $table->integer('rib_banque');
+            $table->string('non_banque');
+            $table->string('adresse_email');
+            $table->integer('tele_personnel');
+            $table->string('nationalites');
+            $table->string('lieu_naissance');
+            $table->string('fumez_vous');
+            $table->string('etat_sante');
+            $table->string('buvze_vous');
+            $table->text('image');
             $table->float('indemnite_presence');
             $table->float('indemnite_transport');
             $table->integer('prime');

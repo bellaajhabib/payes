@@ -99,3 +99,17 @@ Route::get('JournalPaieIrpp', 'JournalPaieIrppController@index');
 |--------------------------------------------------------------------------
 */
 Route::get('cnss', 'CnssController@index');
+
+/*
+ ------------------------------------------------------------------------------------
+Ajax
+ -------------------------------------------------------------------------------------
+ */
+Route::post('/getRequest',function(){
+	$data = Input::all();
+
+	if(Request::ajax())
+	{
+		return $data;
+	}
+});
